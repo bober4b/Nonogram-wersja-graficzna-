@@ -30,6 +30,7 @@ namespace Nonogram__wersja_graficzna_
             InitializeComponent();
             InitializeField();
             CreateButtonGrid();
+            Hinttop();
         }
         
 
@@ -52,17 +53,21 @@ namespace Nonogram__wersja_graficzna_
             {
                 for (int col = 0; col < 10; col++)
                 {
-                    Button button = new Button();
-                    //button.Click += Button_Click;
-                    button.Width = 30;
-                    button.Height = 30;
-                    button.Name = $"field_{row}_{col}";
+                    Button button = new Button
+                    {
+                        //button.Click += Button_Click;
+                        Width = 20,
+                        Height = 20,
+                        Name = $"field_{row}_{col}"
+                    };
 
-                    RadialGradientBrush gradientBrush = new RadialGradientBrush();
-                    gradientBrush.GradientOrigin = new Point(0.5, 0.5);
-                    gradientBrush.Center = new Point(0.5, 0.5);
-                    gradientBrush.RadiusX = 1.1;
-                    gradientBrush.RadiusY = 1.1;
+                    RadialGradientBrush gradientBrush = new RadialGradientBrush
+                    {
+                        GradientOrigin = new Point(0.5, 0.5),
+                        Center = new Point(0.5, 0.5),
+                        RadiusX = 1.1,
+                        RadiusY = 1.1
+                    };
 
 
 
@@ -88,6 +93,32 @@ namespace Nonogram__wersja_graficzna_
                 }
             }
         }
+        private void Hinttop()
+        {
+            Hinter hinttop = new Hinter(gameControl.field);
+            string[] topstring=new string[10];
+            string result = "";
+            for (int i=0;i<5;i++)
+            {
+                topstring = hinttop.HintGeterTop(i);
+                for (int j = 0; j < 10; j++)
+                {
+                    result += "│";
+                    result += "  ";
+                    result += topstring[j];
+                    result += "  ";
+                }
+                result += "│";
+                result += "\n";
+                
+            }
+
+            tophint.FontSize = 9.2;
+            tophint.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            tophint.Text = result;
+        }
+
+
 
         private void Button_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -132,7 +163,7 @@ namespace Nonogram__wersja_graficzna_
 
 
 
-                    gradientBrush.GradientStops.Add(new GradientStop(Colors.AliceBlue, 0.0));
+                    gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkCyan, 0.0));
                     gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
 
                     clickedButton.Background = gradientBrush;
@@ -191,7 +222,7 @@ namespace Nonogram__wersja_graficzna_
 
 
 
-                    gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkCyan, 0.0));
+                    gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0x83, 0xDA, 0x64), 0.0));
                     gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
 
                     clickedButton.Background = gradientBrush;

@@ -65,7 +65,7 @@ namespace Nonogram.controls
                     result[i] = hintListTop[index, i];
                 else
                 {
-                    result[i] = " ";
+                    result[i] = "  ";
                 }
             }
             return result;

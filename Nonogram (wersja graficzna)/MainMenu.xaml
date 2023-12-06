@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        <TextBlock FontSize="80" Margin="155,10,154,306" FontFamily="Comic Sans MS"  Foreground="#FF0BABE0"  >
+        <TextBlock FontSize="80" Margin="155,10,154,306" FontFamily="Comic Sans MS"  Foreground="#FF0BABE0" TextAlignment="Right"  >
                     NONOGRAM
         </TextBlock>
         <ContentControl x:Name="MainContent"/>
