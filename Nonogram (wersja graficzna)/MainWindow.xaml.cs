@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Markup;
 
 
 namespace Nonogram__wersja_graficzna_
@@ -24,25 +25,10 @@ namespace Nonogram__wersja_graficzna_
         public MainWindow()
         {
             InitializeComponent();
+            MainContent.Content = new UserControl1();
         }
 
-        private void NewGame_Click(object sender, RoutedEventArgs e)
-        {
-            // Handle the New Game button click
-            // You can add the logic for starting a new game here
-        }
-
-        private void LoadGame_Click(object sender, RoutedEventArgs e)
-        {
-            // Handle the Load Game button click
-            // You can add the logic for loading a game here
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            // Handle the Exit button click
-            Close();
-        }
+        
 
 
     }

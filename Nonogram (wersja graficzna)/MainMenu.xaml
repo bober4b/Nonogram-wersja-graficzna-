@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Nonogram__wersja_graficzna_.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nonogram__wersja_graficzna_"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <TextBlock FontSize="80" Margin="155,10,154,306" FontFamily="Comic Sans MS"  Foreground="#FF0BABE0"  >
+                    NONOGRAM
+        </TextBlock>
+        <ContentControl x:Name="MainContent"/>
+        <StackPanel x:Name="Buttons" Margin="286,172,286,172" >
+            <StackPanel.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Core.Implicit.xaml" />
+                        <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </StackPanel.Resources>
+            <Button x:Name="button" Content="New Game"  Width="110" Click="NewGame_Click" Margin="0,0,0,5" HorizontalAlignment="Center" FontFamily="Cascadia Mono SemiBold" BorderBrush="#FFC3C3C3" Background="#FFC5C3FF" Foreground="White"/>
+
+            <Button Content="Load Game" Click="LoadGame_Click" Width="110" Margin="0,0,0,5" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
+            <Button Content="Exit" Click="Exit_Click" Margin="0,0,0,5" Width="110" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
+
+
+        </StackPanel>
+    </Grid>
+</UserControl>

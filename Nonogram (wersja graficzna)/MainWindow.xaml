@@ -6,24 +6,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nonogram__wersja_graficzna_"
         mc:Ignorable="d"
-        Title="Nonogram" Height="450" Width="800" Background="Black">
+        Title="Nonogram" Height="450" Width="800" Background="Black" MinHeight="450" MinWidth="800">
     
-    <Viewbox>
+    <Viewbox x:Name="menuViewbox">
+        
         <Grid >
 
-            <TextBlock FontSize="80" Margin="155,10,155,306" FontFamily="Comic Sans MS" Background="Black" Foreground="#FF0BABE0"  >
-                    NONOGRAM
-            </TextBlock>
-
-            <StackPanel Margin="286,172,286,172" >
-                <Button Content="New Game"  Width="110" Click="NewGame_Click" Margin="0,0,0,5" HorizontalAlignment="Center"  Foreground="White" FontFamily="Cascadia Mono SemiBold" Background="#FF948D8D"/>
-                <Button Content="Load Game" Click="LoadGame_Click" Width="110" Margin="0,0,0,5" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
-                <Button Content="Exit" Click="Exit_Click" Margin="0,0,0,5" Width="110" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
-
-
-            </StackPanel>
-
-
+            
+            <ContentControl x:Name="MainContent"/>
+            
 
         </Grid>
     </Viewbox>
