@@ -25,7 +25,7 @@ namespace Nonogram__wersja_graficzna_
         public MainWindow()
         {
             InitializeComponent();
-            MainContent.Content = new UserControl1();
+            MainContent.Content = new MainMenu();
         }
 
         

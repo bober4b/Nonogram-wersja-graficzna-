@@ -18,9 +18,9 @@ namespace Nonogram__wersja_graficzna_
     /// <summary>
     /// Logika interakcji dla klasy UserControl1.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class MainMenu : UserControl
     {
-        public UserControl1()
+        public MainMenu()
         {
             InitializeComponent();
         }
@@ -31,6 +31,7 @@ namespace Nonogram__wersja_graficzna_
 
 
             Buttons.Visibility = Visibility.Collapsed;
+            h1.Visibility = Visibility.Collapsed;
             MainContent.Content = new Game();
 
 
@@ -44,8 +45,9 @@ namespace Nonogram__wersja_graficzna_
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            // Handle the Exit button click
-            
+
+            Window parentWindow=Window.GetWindow(this);
+            if(parentWindow != null) { parentWindow.Close(); }
         }
     }
 }

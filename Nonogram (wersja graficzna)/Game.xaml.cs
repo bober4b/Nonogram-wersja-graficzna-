@@ -31,6 +31,7 @@ namespace Nonogram__wersja_graficzna_
             InitializeField();
             CreateButtonGrid();
             Hinttop();
+            Hintleft();
         }
         
 
@@ -112,10 +113,53 @@ namespace Nonogram__wersja_graficzna_
                 result += "\n";
                 
             }
-
-            tophint.FontSize = 9.2;
+            for (int j = 0; j < 10; j++)
+            {
+                result += "│";
+                result += "  ";
+                result += "  ";
+                result += "  ";
+            }
+            result += "│";
+            tophint.FontSize = 9.3;
             tophint.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
             tophint.Text = result;
+        }
+
+        private void Hintleft()
+        {
+            Hinter hinttop = new Hinter(gameControl.field);
+            string[] topstring = new string[10];
+            string result = "";
+            result += "────────────────";
+            result += "\n";
+            for (int i = 0; i < 20; i++)
+            {
+                
+                if (i % 2 == 0)
+                {
+                    topstring = hinttop.HintGeterLeft(i / 2);
+                    for (int j = 0; j < 5; j++)
+                    {
+
+                        result += "  ";
+                        result += topstring[j];
+                        result += "  ";
+                    }
+                    result += "\n";
+                }
+
+                else
+                {
+                    result += "────────────────";
+                    result += "\n";
+                }
+                    
+
+            }
+            lefthint.FontSize = 7.48;
+            lefthint.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
+            lefthint.Text = result;
         }
 
 
@@ -130,7 +174,7 @@ namespace Nonogram__wersja_graficzna_
 
             if (!gameControl.field[row, col].Answer())
             {
-                if (gameControl.field[row, col].Iscolor(true))
+                if (gameControl.field[row, col].Iscolor(false))
                 {
                     
                     scoremodule.Score++;
@@ -234,7 +278,22 @@ namespace Nonogram__wersja_graficzna_
             }
         }
 
+    
 
+        private void Exit_click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            parentWindow?.Close();
+        }
+
+        private void Exit_menu_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Window parentWindow =   Window.GetWindow (this);
+
+            parentWindow.Content = new MainMenu();
+            
+        }
     }
 }
 
