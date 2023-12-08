@@ -447,6 +447,14 @@ namespace Nonogram__wersja_graficzna_
                 miss.Text = $"{scoremodule.Scorebad}";
             }
             
+            if(scoremodule.Scoreprogress==scoremodule.Scoretrue)
+            {
+                MessageBox.Show($"Gratulację\n Score: {scoremodule.Score}\n Mistakes:{scoremodule.Scorebad}");
+                Window parentWindow = Window.GetWindow(this);
+
+                parentWindow.Content = new MainMenu();
+
+            }
         }
         
         private void menu_esc(object sender, KeyEventArgs e)
@@ -459,6 +467,8 @@ namespace Nonogram__wersja_graficzna_
                     Buttons.Visibility = Visibility.Hidden;
             }
         }
+        
+
     }
 }
 
