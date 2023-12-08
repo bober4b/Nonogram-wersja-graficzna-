@@ -20,7 +20,7 @@ namespace Nonogram.controls
         private readonly int starty = 10;
 
         private bool loaded = false;
-        private readonly Scoremodule score = new Scoremodule();
+        public readonly Scoremodule score = new Scoremodule();
 
         private readonly Comunicator comunicator = new Comunicator();
 

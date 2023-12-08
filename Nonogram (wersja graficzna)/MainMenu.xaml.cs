@@ -39,8 +39,9 @@ namespace Nonogram__wersja_graficzna_
 
         private void LoadGame_Click(object sender, RoutedEventArgs e)
         {
-            // Handle the Load Game button click
-            // You can add the logic for loading a game here
+            Window parentWindow = Window.GetWindow(this);
+
+            parentWindow.Content = new Game(true);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

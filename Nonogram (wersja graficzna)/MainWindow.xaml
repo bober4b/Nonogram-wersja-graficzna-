@@ -1,5 +1,4 @@
 ﻿<Window x:Class="Nonogram__wersja_graficzna_.MainWindow"
-        
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,15 +6,7 @@
         xmlns:local="clr-namespace:Nonogram__wersja_graficzna_"
         mc:Ignorable="d"
         Title="Nonogram" Height="450" Width="800" Background="Black" MinHeight="450" MinWidth="800">
-    
-    <Viewbox x:Name="menuViewbox">
-        
-        <Grid >
-
-            <Frame x:Name="MainContent"/>
-            
-            
-
-        </Grid>
-    </Viewbox>
+    <Grid>
+        <Frame x:Name="MainContent"/>
+    </Grid>
 </Window>

@@ -32,8 +32,17 @@ namespace Nonogram__wersja_graficzna_
             CreateButtonGrid();
             Hinttop();
             Hintleft();
+            scoreupdate();
         }
-        
+        public Game(bool load)
+        {
+            InitializeComponent();
+            loadfield();
+            CreateButtonGridfromLoad();
+            Hinttop();
+            Hintleft();
+            scoreupdate();
+        }
 
         
 
@@ -94,6 +103,104 @@ namespace Nonogram__wersja_graficzna_
                 }
             }
         }
+        private void CreateButtonGridfromLoad()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                RowDefinition rowDef = new RowDefinition();
+                rowDef.Height = GridLength.Auto;
+                buttonGrid.RowDefinitions.Add(rowDef);
+
+                ColumnDefinition colDef = new ColumnDefinition();
+                colDef.Width = GridLength.Auto;
+                buttonGrid.ColumnDefinitions.Add(colDef);
+            }
+
+            for (int row = 0; row < 10; row++)
+            {
+                for (int col = 0; col < 10; col++)
+                {
+                    Button button = new Button
+                    {
+                        //button.Click += Button_Click;
+                        Width = 20,
+                        Height = 20,
+                        Name = $"field_{row}_{col}"
+                    };
+
+                    RadialGradientBrush gradientBrush = new RadialGradientBrush
+                    {
+                        GradientOrigin = new Point(0.5, 0.5),
+                        Center = new Point(0.5, 0.5),
+                        RadiusX = 1.1,
+                        RadiusY = 1.1
+                    };
+
+                    if (gameControl.field[row,col].Answer()) 
+                    {
+                        if (gameControl.field[row,col].Get_answer())
+                        {
+                            if (gameControl.field[row,col].Getcolor())
+                            {
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkCyan, 0.0));
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
+
+                            }
+                            else
+                            {
+                                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0x83, 0xDA, 0x64), 0.0));
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
+                            }
+                            
+
+                        }
+                        else
+                        {
+                            if (gameControl.field[row, col].Getcolor())
+                            {
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.DarkCyan, 0.0));
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
+
+                            }
+                            else
+                            {
+                                gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0x83, 0xDA, 0x64), 0.0));
+                                gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
+                            }
+                            button.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFF0000"));
+                            button.Content = "X";
+
+                        }
+                    }
+                    else
+                    {
+                        gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0xC4, 0xE1, 0xEF), 0.0));
+                        gradientBrush.GradientStops.Add(new GradientStop(Colors.Black, 1.0));
+                    }
+
+                    
+
+                    button.Background = gradientBrush;
+
+                    button.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC3C3C3"));
+
+                    //button.MouseLeftButtonDown += Button_Click_Left;
+                    button.Click += Button_Click_Left;
+                    button.MouseRightButtonDown += Button_MouseRightButtonDown; ;
+
+
+
+
+
+                    Grid.SetRow(button, row);
+                    Grid.SetColumn(button, col);
+
+                    buttonGrid.Children.Add(button);
+                }
+            }
+        }
+
+
         private void Hinttop()
         {
             Hinter hinttop = new Hinter(gameControl.field);
@@ -104,24 +211,29 @@ namespace Nonogram__wersja_graficzna_
                 topstring = hinttop.HintGeterTop(i);
                 for (int j = 0; j < 10; j++)
                 {
-                    result += "│";
-                    result += "  ";
-                    result += topstring[j];
-                    result += "  ";
+                    if (topstring[j] == "10")
+                    {
+                        
+                         result += topstring[j];
+                        result += "    ";
+                    }
+                    else
+                    {
+                        
+                        result += topstring[j];
+                        result += "      ";
+                    }
+                    
+                    
+
+                    
                 }
-                result += "│";
+                
                 result += "\n";
                 
             }
-            for (int j = 0; j < 10; j++)
-            {
-                result += "│";
-                result += "  ";
-                result += "  ";
-                result += "  ";
-            }
-            result += "│";
-            tophint.FontSize = 9.3;
+            
+            tophint.FontSize = 9.15;
             tophint.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
             tophint.Text = result;
         }
@@ -216,13 +328,19 @@ namespace Nonogram__wersja_graficzna_
                     clickedButton.Content = "X";
 
                 }
+                scoreupdate();
             }
         }
 
         private void InitializeField()
         {
             gameControl = new Gra();
-            scoremodule = new Scoremodule();
+            scoremodule =  gameControl.score;
+        }
+        private void loadfield()
+        {
+            gameControl = new Gra("continue.txt");
+            scoremodule =gameControl.score;
         }
         private void Button_Click_Left(object sender, RoutedEventArgs e)
         {
@@ -275,6 +393,7 @@ namespace Nonogram__wersja_graficzna_
                     clickedButton.Content = "X";
 
                 }
+                scoreupdate();
             }
         }
 
@@ -292,6 +411,41 @@ namespace Nonogram__wersja_graficzna_
             Window parentWindow =   Window.GetWindow (this);
 
             parentWindow.Content = new MainMenu();
+            
+        }
+
+        private void NewGameButton(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+
+            parentWindow.Content = new Game();
+        }
+
+        private void SaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            gameControl.GameSaver();
+        }
+
+        private void LoadGameButtonClick(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+
+            parentWindow.Content = new Game(true);
+        }
+
+        private void scoreupdate()
+        {
+            score.Text = $"Progres\n{((scoremodule.Scoreprogress * 100 )/ scoremodule.Scoretrue)}%\n\nMistakes";
+
+            if(scoremodule.Scorebad==0)
+            {
+                miss.Text = $"{scoremodule.Scorebad}";
+            }
+            else
+            {
+                miss.Foreground = Brushes.Red;
+                miss.Text = $"{scoremodule.Scorebad}";
+            }
             
         }
     }
