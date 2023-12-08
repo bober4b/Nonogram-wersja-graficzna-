@@ -448,6 +448,17 @@ namespace Nonogram__wersja_graficzna_
             }
             
         }
+        
+        private void menu_esc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                if(Buttons.Visibility == Visibility.Hidden)
+                Buttons.Visibility = Visibility.Visible;
+                else
+                    Buttons.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
 

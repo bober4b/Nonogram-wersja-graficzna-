@@ -50,5 +50,12 @@ namespace Nonogram__wersja_graficzna_
             Window parentWindow=Window.GetWindow(this);
             if(parentWindow != null) { parentWindow.Close(); }
         }
+
+        private void Options_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+
+            parentWindow.Content = new optionsWindow();
+        }
     }
 }

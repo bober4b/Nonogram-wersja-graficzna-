@@ -13,7 +13,7 @@
                     NONOGRAM
             </TextBlock>
 
-            <StackPanel x:Name="Buttons" Margin="0,156,0,95"  Width="110" Height="100" HorizontalAlignment="Center" >
+            <StackPanel x:Name="Buttons" Margin="0,156,0,50"  Width="110" HorizontalAlignment="Center" >
                 <StackPanel.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
@@ -26,9 +26,11 @@
 
                 <Button Content="Load Game" Click="LoadGame_Click" Width="110" Margin="0,0,0,5" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
                 <Button Content="Exit" Click="Exit_Click" Margin="0,0,0,5" Width="110" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
-
+                <Button Content="Options" Click="Options_Click" Width="110" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
 
             </StackPanel>
+
+
         </Grid>
     </Viewbox>
 </UserControl>

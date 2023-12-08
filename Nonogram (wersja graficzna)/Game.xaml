@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Nonogram__wersja_graficzna_"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+             KeyDown="menu_esc">
     <Viewbox>
         <Grid Margin="0,10,10,0">
             <TextBlock Text="NONOGRAM" FontSize="60" x:Name="h1" FontFamily="Comic Sans MS"  Foreground="#FF0BABE0" TextAlignment="Center" Margin="150,10,163,323"  >
@@ -35,7 +36,7 @@
                 <Grid x:Name="buttonGrid" Height="200" Width="200"/>
             </Grid>
 
-            <StackPanel x:Name="Buttons" Margin="649,209,47,65" >
+            <StackPanel x:Name="Buttons" Margin="649,209,47,65" Visibility="Hidden">
                 <StackPanel.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
@@ -67,7 +68,7 @@
             <Line X1="0" Y1="88.8" X2="0" Y2="287" Stroke="Black" StrokeThickness="1.5" Margin="395,126,223,8"  />
             <Line X1="6" Y1="188.2" X2="204" Y2="188.2" Stroke="Black" StrokeThickness="1.5" Margin="290,126,223,8"  />
 
-            <TextBlock  x:Name="tophint" Margin="303,136,186,289"  />
+            <TextBlock  x:Name="tophint" Margin="303,136,300,289"  />
             <TextBlock x:Name="lefthint" Margin="230,208,513,47"/>
         </Grid>
     </Viewbox>
