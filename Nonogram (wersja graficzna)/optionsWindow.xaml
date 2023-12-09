@@ -22,16 +22,28 @@
             <TextBlock x:Name="guide" FontSize="10" Foreground="White" Margin="0,188,10,0" FontFamily="Comic Sans MS" TextAlignment="Center">
 
             </TextBlock>
-            <TextBlock FontSize="30" Foreground="#FFE3FF6C" Margin="444,321,-4,73" FontFamily="Comic Sans MS" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock x:Name="pulsatingText" FontSize="30" Foreground="#FFE3FF6C" Margin="444,321,-4,73" FontFamily="Comic Sans MS" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="-25.977"/>
+                        <RotateTransform Angle="-22.218"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </TextBlock.RenderTransform>
-                Powodzenia i dobrej zabawy!
+    Powodzenia i dobrej zabawy!
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <!-- Animacja zmieniająca FontSize -->
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" AutoReverse="True" From="20" To="30" Duration="0:0:1"/>
+                                <!-- Animacja obracająca tekst -->
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" AutoReverse="True" From="-5" To="0" Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBlock.Triggers>
             </TextBlock>
             <Button Content="Back to menu" Click="Button_Click" Margin="351,351,361,69" Background="White" FontFamily="Cascadia Mono SemiBold" Foreground="White"></Button>
 

@@ -22,8 +22,8 @@ namespace Nonogram.controls
 
         private int x;
         private int y;
-        private int arrayx;
-        private int arrayy;
+        //private int arrayx;
+        //private int arrayy;
         private readonly int leftview;
         private readonly int topview;
 
@@ -39,8 +39,8 @@ namespace Nonogram.controls
 
             x = 10 + width + width % 2 + 2;
             y = 10 + 1 + height / 2 + height % 2;
-            arrayx = 0;
-            arrayy = 0;
+            //arrayx = 0;
+            //arrayy = 0;
             leftview = 10 + width + width % 2 + 4;
             topview = 10 + 1 + height / 2 + height % 2;
         }

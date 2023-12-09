@@ -16,8 +16,8 @@ namespace Nonogram.controls
         private readonly int height;
         private readonly int width;
 
-        private readonly int startx = 10;
-        private readonly int starty = 10;
+        //private readonly int startx = 10;
+        //private readonly int starty = 10;
 
         private bool loaded = false;
         public readonly Scoremodule score = new Scoremodule();
